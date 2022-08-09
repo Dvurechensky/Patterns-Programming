@@ -183,11 +183,6 @@ public class Nasled : ClassMain
     {
         base.GG();
     }
-
-    ~Nasled()
-    {
-        Console.WriteLine("Destroy");
-    }
 }
 
 
