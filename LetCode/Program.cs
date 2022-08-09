@@ -109,6 +109,50 @@
         return sumArray.Sum();
     }
 
+    /// <summary>
+    /// Вычисляет совпадение частей слов в массиве слов
+    /// </summary>
+    /// <param name="strs">Массив слов</param>
+    /// <returns>Подстрока обобщающая все слова</returns>
+    public static string LongestCommonPrefix(string[] strs)
+    {
+        if (strs.Length == 0)
+            return "";
+        if(strs.Length == 1)
+            return strs[0];
+        string prefix = string.Empty;
+        int[] leghts = { };
+        int tmpIndex = 0;
+        for (int i = 1; i < strs.Length; i++)
+        {
+            char[] word1 = strs[i-1].ToCharArray();
+            char[] word2 = strs[i].ToCharArray();
+            tmpIndex = 0;
+            for (int j = 0; j < word1.Length; j++)
+            {
+                if (word2.Length >= j + 1 && word1[j] == word2[j])
+                {
+                    tmpIndex++;
+                    if (prefix.Length < j + 1)
+                        prefix += word1[j];
+                }
+                else
+                {
+                    if (tmpIndex == 0)
+                        return "";
+                    break;
+                }
+            }
+            Array.Resize(ref leghts, leghts.Length + 1);
+            leghts[leghts.Length - 1] = tmpIndex;
+        }
+        if (prefix.Length > 0)
+            prefix = prefix.Substring(0, leghts.Min());
+        else
+            return "";
+        return prefix;
+    }
+
     static void Main()
     {
         //Console.WriteLine(RomanToInt("MCMXCIV")); //1994

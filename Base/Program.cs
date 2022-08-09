@@ -1,4 +1,6 @@
 ﻿//ссылочные лежат в куче, значимые (ссылка в куче, значение в стеке)
+using Newtonsoft.Json;
+
 namespace Base;
 
 //шаблон, по которому определяется форма объекта (ссылочный тип)
@@ -6,15 +8,33 @@ class Program
 {
     static void Main()
     {
-        ClassMain classMain = new ClassMain();
-        classMain.ResizeExt();
+        IInterTest interTest = new ClassMain();
+        interTest.ResizeExt();//static
+        interTest.Relocate(); //объявлен и реализован в самом интерфейсе
+        var Records = new Records(1, "rec1");
+        var (NameS, idS) = Records; //можно разложить класс на переменные
+        var RecNew = Records with { Name = "rec2" };//можно инициализировать другйо класс на основе данных первого
+        Console.WriteLine($"{NameS} {idS}");
+        var (NameS2, idS2) = RecNew; //можно разложить класс на переменные
+        Console.WriteLine($"{NameS2} {idS2}");
+        Console.WriteLine(Records == RecNew); //можно сравнить классы обычными операторами сравнения
+        Console.WriteLine();
+        Console.WriteLine(RecNew);//можно напечать JSON представление содержимого класса по умолчанию
+        Console.WriteLine(Records);//можно напечать JSON представление содержимого класса по умолчанию
+        var json = JsonConvert.SerializeObject(Records, Formatting.Indented);
+        Console.WriteLine(json);
+        var otherSideRecord = JsonConvert.DeserializeObject<Records>(json);
+        Console.WriteLine(otherSideRecord);
+        Records = Records with { Id = 10};
+        Console.WriteLine(Records);
         Console.Read();
     }
 }
 
-//интерфейс - это контракт (о том что должен содержать class или struct)(ссылочный тип)
-//общий признак для разнородных объектов
-internal interface IInterTest
+// *** это абстракция которая отвечает за контракт взаимодействия для различных типов
+//интерфейс - это контракт взаимодействия (поведение) (о том что должен содержать class или struct)(ссылочный тип)
+//общий признак для разнородных объектов (описываются только сигнатуры методов до C# 8.0) 
+public interface IInterTest
 {
     //декларация (метод без реализации по умолчанию)
     void Build(int build = 0);
@@ -26,13 +46,32 @@ internal interface IInterTest
     //после C# 8.0 можно указывать реализацию операции)
     void Relocate()
     {
-        Console.WriteLine("Realize Relocate");
+        Console.WriteLine("->IInterTest: Relocate");
     }
 }
 
 //абстрактный класс
 public abstract class AbstrTest
 {
+    public int key = 100;
+    public string Name { get; set; }
+
+    public AbstrTest()
+    {
+        key = 110;
+        Name = "Fire";
+
+        Console.WriteLine($"->>>AbstrTest {Name} {key}");
+    }
+
+    public AbstrTest(int key)
+    {
+        this.key = key;
+        Name = "Fire";
+
+        Console.WriteLine($"->>>AbstrTest {Name} {key}");
+    }
+
     //фиксированная операция с реализацией по умолчанию (метод)
     public void Move()
     {
@@ -72,14 +111,14 @@ public struct TestStruct : IInterTest
     }
 }
 
-
+//реализация поведения (ссылочный тип)
 public class ClassMain : AbstrTest, IInterTest
 {
     public int countBuild { get; set; }
     public string Name { get; set; }
     public object ID { get; set; }
 
-    public ClassMain()
+    public ClassMain() : base (0)
     {
         TestStruct testStruct = new TestStruct();
         Console.WriteLine($"TestStruct: {testStruct.Name}, {testStruct.ID}");
@@ -92,7 +131,7 @@ public class ClassMain : AbstrTest, IInterTest
         Open();
     }
 
-    public ClassMain(int build, string name, object id)
+    public ClassMain(int build, string name, object id) : base(build)
     {
         countBuild = build;
         Name = name;
@@ -131,12 +170,45 @@ public class ClassMain : AbstrTest, IInterTest
     {
         Console.WriteLine("Open Abstract Method Class");
     }
+
+    ~ClassMain()
+    {
+        Console.WriteLine("###Destroy ClassMain");
+    }
 }
 
-internal class Nasled : ClassMain
+public class Nasled : ClassMain
 {
     public override void GG()
     {
         base.GG();
     }
+
+    ~Nasled()
+    {
+        Console.WriteLine("Destroy");
+    }
 }
+
+
+public record class Records
+{
+    // Свойства
+    public int Id { get; init; }
+    public string Name { get; init; }
+    public Records(int id, string name)
+    {
+        Id = id;
+        Name = name;
+        Console.WriteLine("Construct");
+    }
+    // Деконструктор
+    public void Deconstruct(out string name, out int id)
+    {
+
+        name = Name;
+        id = Id;
+        Console.WriteLine("Destruct");
+    }
+}
+
