@@ -69,7 +69,7 @@ class GameHistory //Caretaker - смотритель состояния
     private static GameHistory instance;
     public Stack<HeroMemento> History { get; set; }
 
-    public GameHistory()
+    private GameHistory()
     {
         History = new Stack<HeroMemento>();
     }

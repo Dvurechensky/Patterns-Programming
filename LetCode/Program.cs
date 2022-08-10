@@ -153,9 +153,15 @@
         return prefix;
     }
 
+    public static int StrStr(string haystack, string needle)
+    {
+        return string.IsNullOrEmpty(needle) ? 0 : haystack.IndexOf(needle);
+    }
+
     static void Main()
     {
         //Console.WriteLine(RomanToInt("MCMXCIV")); //1994
+        Console.WriteLine(StrStr("aaaaa", "bba")); 
         Console.ReadLine();
     }
 }

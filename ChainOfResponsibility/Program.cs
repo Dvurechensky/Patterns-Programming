@@ -20,7 +20,7 @@ class Program
 abstract class Handler
 {
     public Handler Successor { get; set; }
-    public abstract void HandleRequest(int  condition);
+    public abstract void HandleRequest(int condition);
 }
 
 class ConcreateHandler1 : Handler
