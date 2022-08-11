@@ -19,7 +19,7 @@ class Program
 
 class GameHistory
 {
-    private static object syncRoot = new Object();
+    private static object syncRoot = new();
     private static GameHistory _instance;
     public static GameHistory Instance
     {
