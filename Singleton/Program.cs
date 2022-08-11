@@ -8,7 +8,7 @@ class Program
 {
     static void Main()
     {
-        (new Thread(() =>
+        (new Thread(() => //в потоке
         {
             Console.WriteLine(GameHistory.Instance.History[1]);
         })).Start();
