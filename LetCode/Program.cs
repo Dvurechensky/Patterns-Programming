@@ -158,10 +158,15 @@
         return string.IsNullOrEmpty(needle) ? 0 : haystack.IndexOf(needle);
     }
 
+    public static int MySqrt(int x)
+    {
+        return (int)Math.Sqrt(x);
+    }
+
     static void Main()
     {
         //Console.WriteLine(RomanToInt("MCMXCIV")); //1994
-        Console.WriteLine(StrStr("aaaaa", "bba")); 
+        Console.WriteLine(MySqrt(8)); 
         Console.ReadLine();
     }
 }

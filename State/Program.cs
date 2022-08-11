@@ -9,7 +9,6 @@ class Program
     {
         var context = new Context(new StateA());
         context.Request();
-        context.Request();
         Console.Read();
     }
 }
