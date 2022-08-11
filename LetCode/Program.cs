@@ -167,6 +167,6 @@
     {
         //Console.WriteLine(RomanToInt("MCMXCIV")); //1994
         Console.WriteLine(MySqrt(8)); 
-        Console.ReadLine();
+        Console.ReadKey();
     }
 }

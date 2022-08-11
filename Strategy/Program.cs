@@ -12,7 +12,7 @@ class Program
         car.Move();
         car.Movable = new ElectronicMove();
         car.Move();
-        Console.Read();
+        Console.ReadKey();
     }
 }
 

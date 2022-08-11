@@ -19,7 +19,7 @@ class Program
         customer.Send("Есть заказ! Нужно сделать REST API");
         programmer.Send("REST API готов, нужно протестировать swagger");
         tester.Send("Тест прошёл успешно, документация отличная!");
-        Console.Read();
+        Console.ReadKey();
     }
 }
 

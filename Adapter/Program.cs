@@ -17,7 +17,7 @@ class Program
         man.Travel(camelTransport);
         man.Travel(car);
 
-        Console.Read();
+        Console.ReadKey();
     }
 }
 

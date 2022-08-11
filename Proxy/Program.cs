@@ -21,7 +21,7 @@ class Program
             page1 = book.GetPage(1);
             Console.WriteLine(page1.Text);
         }
-        Console.Read();
+        Console.ReadKey();
     }
 }
 

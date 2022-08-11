@@ -12,7 +12,7 @@ class Program
         var initCommand = new Invoker(new ConcreteCommand(new Receiver()));
         initCommand.Run();
         initCommand.Cancel();
-        Console.Read();
+        Console.ReadKey();
     }
 }
 

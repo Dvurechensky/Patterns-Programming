@@ -10,7 +10,7 @@ class Program
     {
         var facade = new Facade(new A(), new B());
         facade.Start();
-        Console.Read();
+        Console.ReadKey();
     }
 }
 

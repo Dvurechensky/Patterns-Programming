@@ -17,7 +17,7 @@ class Program
             heroMan.RestoreState(GameHistory.Instance.History.Pop());
             heroMan.Shoot();
         }
-        Console.Read();
+        Console.ReadKey();
     }
 }
 

@@ -13,7 +13,7 @@ class Program
         Handler h2 = new ConcreateHandler2();
         h1.Successor = h2;
         h1.HandleRequest(2); //От первого до второго объекта обработка
-        Console.Read();
+        Console.ReadKey();
     }
 }
 

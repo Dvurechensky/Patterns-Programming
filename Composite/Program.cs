@@ -17,7 +17,7 @@ class Program
         paths.components.Add(0, new Directory("F"));
         paths.components[0].Add(new File("resize.cs"));
         paths.Print();
-        Console.Read();
+        Console.ReadKey();
     }
 }
 

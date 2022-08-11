@@ -11,7 +11,7 @@ class Program
         Library library = new Library();
         Reader reader = new Reader();
         reader.SetBooks(library);
-        Console.Read();
+        Console.ReadKey();
     }
 }
 

@@ -31,7 +31,7 @@ class Program
             latitude += 0.1;
         }
 
-        Console.Read();
+        Console.ReadKey();
     }
 }
 

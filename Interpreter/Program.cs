@@ -23,7 +23,7 @@ class Program
         var expressionSub = new SubstructExpression(expressionAdd, 
                                                     new NumberExpression("z"));
         Console.WriteLine(expressionSub.Interpret(context));
-        Console.Read();
+        Console.ReadKey();
     }
 }
 

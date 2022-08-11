@@ -15,7 +15,7 @@ class Program
         bank.Add(new Company(Name: "Microsoft", Number: 1904));
         bank.Accept(new HtmlVisitor());
         bank.Accept(new XmlVisitor());
-        Console.Read();
+        Console.ReadKey();
     }
 }
 

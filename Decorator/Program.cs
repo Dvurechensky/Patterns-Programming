@@ -13,7 +13,7 @@ class Program
         Console.WriteLine(r.GetCost()); 
         Pizza i = new TomatoPizza(r);
         Console.WriteLine(i.GetCost());
-        Console.Read();
+        Console.ReadKey();
     }
 }
 

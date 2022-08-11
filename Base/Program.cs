@@ -27,7 +27,7 @@ class Program
         Console.WriteLine(otherSideRecord);
         Records = Records with { Id = 10};
         Console.WriteLine(Records);
-        Console.Read();
+        Console.ReadKey();
     }
 }
 

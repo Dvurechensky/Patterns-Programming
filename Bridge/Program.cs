@@ -13,7 +13,7 @@ class Program
         var programmer_2 = new FreelancerProgger(new CSharpLang());
         programmer_2.DoWork();
         programmer_2.EarnMoney();
-        Console.Read();
+        Console.ReadKey();
     }
 }
 

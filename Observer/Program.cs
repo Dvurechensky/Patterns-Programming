@@ -12,7 +12,7 @@ class Program
         concreteObservable.AddObserver(new Observer("Job"));
         concreteObservable.AddObserver(new Observer("Robin"));
         concreteObservable.AddObserver(new Observer("Jaz"));
-        Console.Read();
+        Console.ReadKey();
     }
 }
 

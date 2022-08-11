@@ -83,6 +83,6 @@ class Program
         }
         stopwatch.Stop();
         Console.WriteLine("2: " + stopwatch.Elapsed);
-        Console.Read();
+        Console.ReadKey();
     }
 }

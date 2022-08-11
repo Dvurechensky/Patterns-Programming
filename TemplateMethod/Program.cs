@@ -10,7 +10,7 @@ class Program
     {
         new School().Learn();
         new University().Learn();
-        Console.Read();
+        Console.ReadKey();
     }
 }
 
