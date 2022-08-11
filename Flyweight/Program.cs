@@ -5,8 +5,6 @@
     (для оптимизации работы с памятью)
  */
 
-using System.Collections;
-
 class Program
 {
     static void Main()
