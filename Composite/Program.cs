@@ -9,10 +9,8 @@ class Program
 {
     static void Main()
     {
-        var paths = new Paths(new Dictionary<int, Directory>()
-        {
-            { 1, new Directory("C") },
-        });
+        var paths = new Paths(new Dictionary<int, Directory>());
+        paths.components.Add(1, new Directory("C"));
         paths.components[1].Add(new Folder("SYSTEM"));
         paths.components[1].Add(new Folder("DATA"));
         paths.components[1].Add(new File("test.txt"));
