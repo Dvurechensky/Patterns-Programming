@@ -37,6 +37,6 @@ class GameHistory
     private GameHistory()
     {
         History = new[] { "One History",
-                            "Two History"}; 
+                           "Two History"}; 
     }
 }
