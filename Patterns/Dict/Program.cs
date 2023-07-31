@@ -1,27 +1,48 @@
 ﻿using System.Collections;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
 
 class Program
 {
-    //Главное свойство dictionary — быстрый поиск с помощью ключей, Можно также добавлять и удалять элементы
-    static Dictionary<string, object> _dictionary = new Dictionary<string, object>();
-    //быстрее HashTable до 10-ти  элементов ListDictionary
-    static ListDictionary LDictionary = new ListDictionary
+    /// <summary>
+    /// Стандартный Dictionary
+    /// Быстрый поиск с помощью ключей, можно добавлять и удалять элементы
+    /// </summary>
+    private static readonly Dictionary<string, object> Dictionary = new();
+
+    /// <summary>
+    /// ListDictionary
+    /// Он меньше и быстрее, чем Hashtable если количество элементов равно 10 или меньше
+    /// </summary>
+    private static readonly ListDictionary LDictionary = new()
     {
          { "key", "value"}
     };
-    static HybridDictionary HDictionary = new HybridDictionary
+
+    /// <summary>
+    /// HybridDictionary
+    /// Рекомендуется для случаев, когда количество элементов в словаре неизвестно.
+    /// Он использует улучшенную производительность ListDictionary с небольшими коллекциями 
+    /// и предлагает гибкость переключения на Hashtable , которая обрабатывает большие коллекции лучше
+    /// </summary>
+    private static readonly HybridDictionary HDictionary = new()
     {
          { "key", "value"}
     };
-    //вы хотите использовать ключи для поиска или foreach для итерации с помощью DictionaryEntry объектов
-    //При просмотре большой коллекции чтение OrderedDictionary с использованием первого примера,
-    //числового индекса, всегда будет быстрее, чем при использовании метода стиля словаря
-    static OrderedDictionary ODictionary = new OrderedDictionary
-            {
+
+    /// <summary>
+    /// OrderedDictionary 
+    /// Он всегда упорядочен при выводе foreach
+    /// Ключ не может быть нулевым , но значение может быть.
+    /// Каждый элемент представляет собой пару ключ/значение, хранящуюся в объекте DictionaryEntry
+    /// Доступ к элементам возможен либо по ключу, либо по индексу.
+    /// [!]
+    /// если элементов больше 20-ти быстрее при цикле for
+    /// если элементов меньше 15-20 быстрее в foreach чем for
+    /// </summary>
+    private static readonly OrderedDictionary ODictionary = new()
+    {
                 {"01", "odin"},
                 {"02", "dva"},
                 {"03", "tri"},
@@ -53,19 +74,26 @@ class Program
                 {"30", "pyat"},
                 {"31", "pyat"}
             };
-    //дерево бинарного поиска, в котором все элементы отсортированы на основе ключа
-    //быстрее вставляет и удаляет элементы
-    static SortedDictionary<int, string> SDictionary = new SortedDictionary<int, string>();
-    //потокобезопасная коллекция пар "ключ-значение", доступ к которой могут одновременно получать несколько потоков.
-    //по умолчанию 4 потока на запись concurrencyLevel = 4
-    //первоначальное число элементов 31 сapacity = 31
-    //В отличие от обычного Dictionary, можно производить вставку в ConcurrentDictionary или удаление из него прямо во время перечисления
-    static ConcurrentDictionary<int, string> concurrentDictionary = new ConcurrentDictionary<int, string>();
+
+
+    /// <summary>
+    /// SortedDictionary
+    /// Дерево бинарного поиска, в котором все элементы отсортированы на основе ключа
+    /// Быстрее вставляет и удаляет элементы
+    /// </summary>
+    private static readonly SortedDictionary<int, string> SDictionary = new();
+
+    /// <summary>
+    /// ConcurrentDictionary
+    /// Потокобезопасная коллекция пар "ключ-значение", доступ к которой могут одновременно получать несколько потоков.
+    /// по умолчанию 4 потока на запись concurrencyLevel = 4
+    /// первоначальное число элементов 31 сapacity = 31
+    /// В отличие от обычного Dictionary, можно производить вставку в ConcurrentDictionary или удаление из него прямо во время перечисления
+    /// </summary>
+    private static readonly ConcurrentDictionary<int, string> СoncurrentDictionary = new();
 
     static void Main()
     {
-        //OrderedDictionary - быстрее если элементов больше 20-ти при цикле for
-        //foreach быстрее for если элементов меньше 15-20
         Stopwatch stopwatch = new Stopwatch();
         stopwatch.Start();
         for(int i = 0; i < ODictionary.Count; i++)
@@ -74,7 +102,7 @@ class Program
             Console.WriteLine(val);
         }
         stopwatch.Stop();
-        Console.WriteLine("1: " + stopwatch.Elapsed);
+        Console.WriteLine("[for][el > 20]: " + stopwatch.Elapsed);
         stopwatch.Reset();
         stopwatch.Start();
         foreach (DictionaryEntry item in ODictionary)
@@ -82,7 +110,7 @@ class Program
             Console.WriteLine(item.Value);
         }
         stopwatch.Stop();
-        Console.WriteLine("2: " + stopwatch.Elapsed);
+        Console.WriteLine("[foreach][el > 20]: " + stopwatch.Elapsed);
         Console.ReadKey();
     }
 }

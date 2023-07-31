@@ -31,13 +31,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mediator", "Mediator\Mediat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Visitor", "Visitor\Visitor.csproj", "{737EB7A2-98B4-473A-81B9-9CAB3BEB69CF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Base Logic(Базовые описания)", "Base Logic(Базовые описания)", "{4FF822AA-F380-4D92-86B0-50FE5CE6BCEE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Base Logic(Базовые понятия)", "Base Logic(Базовые понятия)", "{4FF822AA-F380-4D92-86B0-50FE5CE6BCEE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Base", "Base\Base.csproj", "{3E397CB2-2AAF-4D66-855D-E2BA198C380E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaseInfo", "Base\BaseInfo.csproj", "{3E397CB2-2AAF-4D66-855D-E2BA198C380E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Base.Tests", "BaseTests\Base.Tests.csproj", "{90CB9984-E9D1-4821-BA45-D2C668A81813}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dict", "Dict\Dict.csproj", "{279CA287-2FCE-45C7-BBD8-4E3941B09028}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DictionaryInfo", "Dict\DictionaryInfo.csproj", "{279CA287-2FCE-45C7-BBD8-4E3941B09028}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LetCode", "LetCode\LetCode.csproj", "{71DA93E5-2EB8-4C26-9537-3C1F18DFEC15}"
 EndProject
@@ -66,6 +66,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Prototype", "Prototype\Prototype.csproj", "{F92E5A05-034A-43E4-A7DB-0073C3E322EC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Singleton", "Singleton\Singleton.csproj", "{E17B2354-AD60-4083-BA38-6A9BD85F81B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LetCode.Tests", "LetCode.Tests\LetCode.Tests.csproj", "{34F0E125-BE37-42FF-A679-4EBA9F29D86D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -185,6 +187,10 @@ Global
 		{E17B2354-AD60-4083-BA38-6A9BD85F81B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E17B2354-AD60-4083-BA38-6A9BD85F81B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E17B2354-AD60-4083-BA38-6A9BD85F81B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34F0E125-BE37-42FF-A679-4EBA9F29D86D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34F0E125-BE37-42FF-A679-4EBA9F29D86D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34F0E125-BE37-42FF-A679-4EBA9F29D86D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34F0E125-BE37-42FF-A679-4EBA9F29D86D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -218,6 +224,7 @@ Global
 		{BA3B2D0E-484B-4075-92F5-D84B10EFDE4D} = {6B6B76CA-287A-4FA5-99FE-8098611020F9}
 		{F92E5A05-034A-43E4-A7DB-0073C3E322EC} = {6B6B76CA-287A-4FA5-99FE-8098611020F9}
 		{E17B2354-AD60-4083-BA38-6A9BD85F81B3} = {6B6B76CA-287A-4FA5-99FE-8098611020F9}
+		{34F0E125-BE37-42FF-A679-4EBA9F29D86D} = {4FF822AA-F380-4D92-86B0-50FE5CE6BCEE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6A7DE462-3436-49E8-A6F0-59158DFB417F}

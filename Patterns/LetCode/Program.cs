@@ -1,4 +1,4 @@
-﻿static class Program
+﻿public static class LetCodeTasks
 {
     /// <summary>
     /// Какие числа массива дают в сумме указанное число
@@ -153,20 +153,8 @@
         return prefix;
     }
 
-    public static int StrStr(string haystack, string needle)
-    {
-        return string.IsNullOrEmpty(needle) ? 0 : haystack.IndexOf(needle);
-    }
-
-    public static int MySqrt(int x)
-    {
-        return (int)Math.Sqrt(x);
-    }
-
     static void Main()
     {
-        //Console.WriteLine(RomanToInt("MCMXCIV")); //1994
-        Console.WriteLine(MySqrt(8)); 
         Console.ReadKey();
     }
 }

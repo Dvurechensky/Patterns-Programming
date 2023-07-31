@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using static Base.Records;
 
 namespace Base;
 
@@ -13,6 +14,23 @@ class Program
 {
     static void Main()
     {
+        var person = new Person()                    //реализация record сборки разборки
+        {
+            Id = 1,
+            Name = "john"
+        };
+        Console.WriteLine(person.ToString());
+        var job = new Job()
+        {
+            Ida = 786897980,
+            Names = "Address"
+        };
+        Console.WriteLine(job.ToString());
+        var gl = new GlobalInfo();
+        person.Deconstruct(out gl.Name, out gl.Id);
+        job.Deconstruct(out gl.Names, out gl.Ida);
+        Console.WriteLine($"{gl.Name}/{gl.Names}/{gl.Id}/{gl.Ida}");
+
         IInterTest interTest = new ClassMain();
         interTest.ResizeExt();                      //методы static
         interTest.Relocate();                       //метод объявлен и реализован в самом интерфейсе
@@ -30,7 +48,7 @@ class Program
         Console.WriteLine(json);
         var otherSideRecord = JsonConvert.DeserializeObject<Records>(json);
         Console.WriteLine(otherSideRecord);
-        Records = Records with { Id = 10};
+        Records = Records with { Id = 10 };
         Console.WriteLine(Records);
         Console.ReadKey();
     }
@@ -135,8 +153,6 @@ public abstract class AbstrTest
     /// </summary>
     public abstract void Open();
 }
-
-//(значимый тип) (нет деструктора, нет наследования)
 
 /// <summary>
 /// Определение:
@@ -336,6 +352,14 @@ public record class Records
         Console.WriteLine("Construct");
     }
 
+    public class GlobalInfo
+    {
+        public int Id;
+        public string Name;
+        public int Ida;
+        public string Names;
+    }
+
     /// <summary>
     /// Деконструктор
     /// </summary>
@@ -346,5 +370,41 @@ public record class Records
         name = Name;
         id = Id;
         Console.WriteLine("Destruct");
+    }
+}
+
+public record class Person
+{
+    public int Id { get; init; }
+    public string Name { get; init; }
+
+    /// <summary>
+    /// Деконструктор
+    /// </summary>
+    /// <param name="name">имя</param>
+    /// <param name="id">идентификатор</param>
+    public void Deconstruct(out string name, out int id)
+    {
+        name = Name;
+        id = Id;
+        Console.WriteLine("Destruct Person");
+    }
+}
+
+public record class Job
+{
+    public int Ida { get; init; }
+    public string Names { get; init; }
+
+    /// <summary>
+    /// Деконструктор
+    /// </summary>
+    /// <param name="name">имя</param>
+    /// <param name="id">идентификатор</param>
+    public void Deconstruct(out string name, out int id)
+    {
+        name = Names;
+        id = Ida;
+        Console.WriteLine("Destruct Job");
     }
 }
