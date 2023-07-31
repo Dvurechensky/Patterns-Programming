@@ -35,7 +35,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Base Logic(Базовые �
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Base", "Base\Base.csproj", "{3E397CB2-2AAF-4D66-855D-E2BA198C380E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaseUnitTests", "BaseTests\BaseUnitTests.csproj", "{90CB9984-E9D1-4821-BA45-D2C668A81813}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Base.Tests", "BaseTests\Base.Tests.csproj", "{90CB9984-E9D1-4821-BA45-D2C668A81813}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dict", "Dict\Dict.csproj", "{279CA287-2FCE-45C7-BBD8-4E3941B09028}"
 EndProject
@@ -47,25 +47,25 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Proxy", "Proxy\Proxy.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bridge", "Bridge\Bridge.csproj", "{47297A10-E472-454B-B333-5554789B8D21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Composite", "Composite\Composite.csproj", "{34A7974D-A37A-4D79-AF2A-5EECC9295884}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Composite", "Composite\Composite.csproj", "{34A7974D-A37A-4D79-AF2A-5EECC9295884}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Decorator", "Decorator\Decorator.csproj", "{751A645A-8E65-4556-A322-5170CC3CA905}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Decorator", "Decorator\Decorator.csproj", "{751A645A-8E65-4556-A322-5170CC3CA905}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facade", "Facade\Facade.csproj", "{770B90B9-DD17-4279-AE68-FCC6E3783D05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Facade", "Facade\Facade.csproj", "{770B90B9-DD17-4279-AE68-FCC6E3783D05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flyweight", "Flyweight\Flyweight.csproj", "{A0DB1337-5532-49C3-99DD-BEBE27F9B382}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flyweight", "Flyweight\Flyweight.csproj", "{A0DB1337-5532-49C3-99DD-BEBE27F9B382}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractFactory", "AbstractFactory\AbstractFactory.csproj", "{28A8AFD1-7FDB-45E4-A349-1BDD1FEB53C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbstractFactory", "AbstractFactory\AbstractFactory.csproj", "{28A8AFD1-7FDB-45E4-A349-1BDD1FEB53C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryMethod", "FactoryMethod\FactoryMethod.csproj", "{206CBCB3-8D1F-47A7-B510-AC9D34C8CBD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FactoryMethod", "FactoryMethod\FactoryMethod.csproj", "{206CBCB3-8D1F-47A7-B510-AC9D34C8CBD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Builder", "Builder\Builder.csproj", "{B4567CE3-9BEC-445E-8830-B4B206FA7641}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Builder", "Builder\Builder.csproj", "{B4567CE3-9BEC-445E-8830-B4B206FA7641}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentBuilder", "FluentBuilder\FluentBuilder.csproj", "{BA3B2D0E-484B-4075-92F5-D84B10EFDE4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentBuilder", "FluentBuilder\FluentBuilder.csproj", "{BA3B2D0E-484B-4075-92F5-D84B10EFDE4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prototype", "Prototype\Prototype.csproj", "{F92E5A05-034A-43E4-A7DB-0073C3E322EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Prototype", "Prototype\Prototype.csproj", "{F92E5A05-034A-43E4-A7DB-0073C3E322EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Singleton", "Singleton\Singleton.csproj", "{E17B2354-AD60-4083-BA38-6A9BD85F81B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Singleton", "Singleton\Singleton.csproj", "{E17B2354-AD60-4083-BA38-6A9BD85F81B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

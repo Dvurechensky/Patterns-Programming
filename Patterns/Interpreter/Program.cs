@@ -13,16 +13,19 @@ class Program
         int x = 5;
         int y = 8;
         int z = 2;
+        int k = 10;
         //задаём переменные в контекст
         context.SetVariable("x", x);
         context.SetVariable("y", y);
         context.SetVariable("z", z);
+        context.SetVariable("k", k);
         //x + y - z
         var expressionAdd = new AddExpression(new NumberExpression("x"), 
                                               new NumberExpression("y"));
         var expressionSub = new SubstructExpression(expressionAdd, 
                                                     new NumberExpression("z"));
-        Console.WriteLine(expressionSub.Interpret(context));
+        var expressionPow = new PowExpression(expressionSub, new NumberExpression("k"));
+        Console.WriteLine(expressionPow.Interpret(context));
         Console.ReadKey();
     }
 }
@@ -86,6 +89,23 @@ class AddExpression : IExpression // нетерминальное выражен
     public int Interpret(Context context)
     {
         return LeftExpression.Interpret(context) + RightExpression.Interpret(context);
+    }
+}
+
+class PowExpression : IExpression // нетерминальное выражение для сложения
+{
+    IExpression LeftExpression { get; set; }
+    IExpression RightExpression { get; set; }
+
+    public PowExpression(IExpression left, IExpression right)
+    {
+        LeftExpression = left;
+        RightExpression = right;
+    }
+
+    public int Interpret(Context context)
+    {
+        return LeftExpression.Interpret(context) * RightExpression.Interpret(context);
     }
 }
 
