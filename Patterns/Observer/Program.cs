@@ -12,19 +12,40 @@ class Program
         concreteObservable.AddObserver(new Observer("Job"));
         concreteObservable.AddObserver(new Observer("Robin"));
         concreteObservable.AddObserver(new Observer("Jaz"));
+        concreteObservable.AddObserver(new Observer("John"));
         Console.ReadKey();
     }
 }
 
+/// <summary>
+/// Поведение наблюдателя
+/// </summary>
 interface IObservable
 {
+    /// <summary>
+    /// Добавить наблюдаемого
+    /// </summary>
+    /// <param name="observer">Наблюдаемый</param>
     void AddObserver(IObserver observer);
+    /// <summary>
+    /// Удалить наблюдаемого
+    /// </summary>
+    /// <param name="observer">Наблюдаемый</param>
     void RemoveObserver(IObserver observer);
+    /// <summary>
+    /// Оповестить всех наблюдаемых
+    /// </summary>
     void NotifyObservers();
 }
 
+/// <summary>
+/// Реализация конкретного наблюдателя
+/// </summary>
 class ConcreteObservable : IObservable
 {
+    /// <summary>
+    /// Список наблюдаемых
+    /// </summary>
     private List<IObserver> _observers;
 
     public ConcreteObservable()
@@ -34,12 +55,14 @@ class ConcreteObservable : IObservable
 
     public void AddObserver(IObserver observer)
     {
+        Console.WriteLine("Event Add Observer");
         NotifyObservers();
         _observers.Add(observer);
     }
 
     public void NotifyObservers()
     {
+        if(_observers.Count == 0) Console.WriteLine("Не кого оповещать...");
         foreach (var observer in _observers)
             observer.Update();
     }
@@ -51,11 +74,17 @@ class ConcreteObservable : IObservable
     }
 }
 
+/// <summary>
+/// Поведение наблюдаемого
+/// </summary>
 interface IObserver
 {
     void Update();
 }
 
+/// <summary>
+/// Наблюдаемый 
+/// </summary>
 class Observer : IObserver
 {
     public string Name { get; set; }
