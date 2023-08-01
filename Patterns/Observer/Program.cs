@@ -8,12 +8,14 @@ class Program
 {
     static void Main()
     {
+        #region Пример №1 - базовое
         var concreteObservable = new ConcreteObservable();
         concreteObservable.AddObserver(new Observer("Job"));
         concreteObservable.AddObserver(new Observer("Robin"));
         concreteObservable.AddObserver(new Observer("Jaz"));
         concreteObservable.AddObserver(new Observer("John"));
         Console.ReadKey();
+        #endregion
     }
 }
 

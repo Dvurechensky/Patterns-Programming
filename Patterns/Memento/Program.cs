@@ -8,6 +8,7 @@ class Program
 {
     public static void Main(string[] args)
     {
+        #region Пример №1 - базовое
         using (var hero = new Hero())
         {
             hero.Shoot();
@@ -18,6 +19,7 @@ class Program
             heroMan.Shoot();
         }
         Console.ReadKey();
+        #endregion
     }
 }
 

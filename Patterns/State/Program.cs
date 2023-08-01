@@ -7,17 +7,27 @@ class Program
 {
     static void Main()
     {
-        var context = new Context(new StateA());
-        context.Request();
+        #region Пример №1 - базовое
+        var contextA = new Context(new StateA());
+        var contextB = new Context(new StateB());
+        contextA.Request();
+        contextB.Request();
         Console.ReadKey();
+        #endregion
     }
 }
 
+/// <summary>
+/// Абстракция состояния
+/// </summary>
 abstract class State
 {
     public abstract void Handle(Context context);
 }
 
+/// <summary>
+/// Реализация состояния A
+/// </summary>
 class StateA : State
 {
     public StateA()
@@ -31,6 +41,9 @@ class StateA : State
     }
 }
 
+/// <summary>
+/// Реализация состояния B
+/// </summary>
 class StateB : State
 {
     public StateB()
@@ -44,6 +57,9 @@ class StateB : State
     }
 }
 
+/// <summary>
+/// Контекст со своим состоянием
+/// </summary>
 class Context
 {
     public State State { get; set; }
