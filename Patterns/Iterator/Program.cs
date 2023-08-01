@@ -23,11 +23,11 @@ class Program
 
         DataStack stackCopy = new DataStack(stack);
 
-        Console.WriteLine(stack == stackCopy);
+        Console.WriteLine(stack == stackCopy);      //true
 
         stackCopy.Push(10);
 
-        Console.WriteLine(stack == stackCopy);
+        Console.WriteLine(stack == stackCopy);      //false
         #endregion
     }
 }
