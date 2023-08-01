@@ -21,10 +21,19 @@ class Program
     }
 }
 
+/// <summary>
+/// Класс героя
+/// </summary>
 class Hero : IDisposable
 {
-    private int patrons = 10; //кол-во патронов
+    /// <summary>
+    /// Количество патронов
+    /// </summary>
+    private int patrons = 10;           
 
+    /// <summary>
+    /// Выстрел
+    /// </summary>
     public void Shoot()
     {
         if(patrons > 0)
@@ -36,25 +45,39 @@ class Hero : IDisposable
             Console.WriteLine("Нет патронов");
     }
 
+    /// <summary>
+    /// Сохранение состояния
+    /// </summary>
+    /// <returns></returns>
     public HeroMemento SaveState()
     {
         Console.WriteLine($"Сохранено - {patrons}");
         return new HeroMemento(patrons);
     }
 
+    /// <summary>
+    /// Восстановление состояния
+    /// </summary>
+    /// <param name="memento">Хранитель состояния</param>
     public void RestoreState(HeroMemento memento)
     {
         patrons = memento.Patrons;
         Console.WriteLine($"Загружено - {patrons}");
     }
 
+    /// <summary>
+    /// Удаление из памяти + сохранение в истории последнего состояния
+    /// </summary>
     public void Dispose()
     {
         GameHistory.Instance.History.Push(SaveState());
     }
 }
 
-class HeroMemento //Memento - Хранитель состояния
+/// <summary>
+/// Memento - Хранитель состояния
+/// </summary>
+class HeroMemento
 {
     public int Patrons { get; private set; }
 
@@ -64,7 +87,10 @@ class HeroMemento //Memento - Хранитель состояния
     }
 }
 
-class GameHistory //Caretaker - смотритель состояния
+/// <summary>
+/// Caretaker - смотритель состояния
+/// </summary>
+class GameHistory 
 {
     private static GameHistory instance;
     public Stack<HeroMemento> History { get; set; }
