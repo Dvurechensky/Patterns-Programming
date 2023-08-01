@@ -4,11 +4,11 @@
     избавляя их от необходимости ссылаться друг на друга
     и даёт возможность независимо изменять их взаимодействие.
  */
-
 class Program
 {
     public static void Main(string[] args)
     {
+        #region Пример №1 - базовое
         ManagerMediator mediator = new ManagerMediator();
         Colleague customer = new CustomerCollegue(mediator);
         Colleague programmer = new ProgrammerCollegue(mediator);
@@ -20,15 +20,22 @@ class Program
         programmer.Send("REST API готов, нужно протестировать swagger");
         tester.Send("Тест прошёл успешно, документация отличная!");
         Console.ReadKey();
+        #endregion
     }
 }
 
-abstract class Mediator //интерфейс для взаимодействия с посредником
+/// <summary>
+/// Интерфейс для взаимодействия с посредником
+/// </summary>
+abstract class Mediator
 {
     public abstract void Send(string message, Colleague colleague);
 }
 
-abstract class Colleague //интерфейс для взаимодействия с коллегами
+/// <summary>
+/// Интерфейс для взаимодействия с коллегами
+/// </summary>
+abstract class Colleague
 {
     Mediator Mediator { get; set; }
 
@@ -45,7 +52,10 @@ abstract class Colleague //интерфейс для взаимодействи�
     public abstract void Notify(string message);
 }
 
-class CustomerCollegue : Colleague //непосредственный заказчик
+/// <summary>
+/// Непосредственный заказчик
+/// </summary>
+class CustomerCollegue : Colleague
 {
     public CustomerCollegue(Mediator mediator) : base(mediator) {}
 
@@ -55,7 +65,10 @@ class CustomerCollegue : Colleague //непосредственный заказ
     }
 }
 
-class ProgrammerCollegue : Colleague //программист
+/// <summary>
+/// Программист
+/// </summary>
+class ProgrammerCollegue : Colleague
 {
     public ProgrammerCollegue(Mediator mediator) : base(mediator) { }
 
@@ -65,7 +78,10 @@ class ProgrammerCollegue : Colleague //программист
     }
 }
 
-class TesterCollegue : Colleague //тестировщик
+/// <summary>
+/// Тестировщик
+/// </summary>
+class TesterCollegue : Colleague 
 {
     public TesterCollegue(Mediator mediator) : base(mediator) { }
 
@@ -75,6 +91,9 @@ class TesterCollegue : Colleague //тестировщик
     }
 }
 
+/// <summary>
+/// Посредник
+/// </summary>
 class ManagerMediator : Mediator
 {
     public Colleague Customer { get; set; }
@@ -83,15 +102,11 @@ class ManagerMediator : Mediator
 
     public override void Send(string message, Colleague colleague)
     {
-        //если отправитель заказчик значит есть новый заказ
-        //отправляем сообщение программисту - сделать заказ
-        if(Customer == colleague)
-            Programmer.Notify(message);
-        //если отправитель программист значит приступаем к тестированию
-        else if(Programmer == colleague)
-            Tester.Notify(message);
-        //если отправитель тестировщик значит оповещаем заказчика о готовности задачи
-        else if(Tester == colleague)
-            Customer.Notify(message);
+        if(Customer == colleague)           //если отправитель заказчик значит есть новый заказ
+            Programmer.Notify(message);     //отправляем сообщение программисту - сделать заказ
+        else if(Programmer == colleague)    //если отправитель программист 
+            Tester.Notify(message);         //отправляем сообщение тестировщику
+        else if(Tester == colleague)        //если отправитель тестировщик 
+            Customer.Notify(message);       //значит оповещаем заказчика
     }
 }
