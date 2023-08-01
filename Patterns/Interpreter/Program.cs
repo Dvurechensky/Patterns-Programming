@@ -8,6 +8,7 @@ class Program
 {
     public static void Main(string[] args)
     {
+        #region Пример №1 - базовое
         var context = new Context();
         //создаём переменные
         int x = 5;
@@ -26,10 +27,18 @@ class Program
                                                     new NumberExpression("z"));
         var expressionPow = new PowExpression(expressionSub, new NumberExpression("k"));
         Console.WriteLine(expressionPow.Interpret(context));
+        Console.WriteLine("Please press Enter...");
         Console.ReadKey();
+        #endregion
+        #region Пример №2
+       
+        #endregion
     }
 }
 
+/// <summary>
+/// Агрегатор выражений
+/// </summary>
 class Context
 {
     Dictionary<string, int> variables;
@@ -56,12 +65,18 @@ class Context
     }
 }
 
-interface IExpression //интерфейс интерпретатора
+/// <summary>
+/// Поведение интерпретатора
+/// </summary>
+interface IExpression
 {
     int Interpret(Context context);
 }
 
-class NumberExpression : IExpression //терминальное выражение
+/// <summary>
+/// Терминальное выражение
+/// </summary>
+class NumberExpression : IExpression
 {
     string Name { get; set; }
     public NumberExpression(string name)
@@ -75,7 +90,10 @@ class NumberExpression : IExpression //терминальное выражени
     }
 }
 
-class AddExpression : IExpression // нетерминальное выражение для сложения
+/// <summary>
+/// Нетерминальное выражение для сложения
+/// </summary>
+class AddExpression : IExpression
 {
     IExpression LeftExpression { get; set; }
     IExpression RightExpression { get; set; }
@@ -92,7 +110,10 @@ class AddExpression : IExpression // нетерминальное выражен
     }
 }
 
-class PowExpression : IExpression // нетерминальное выражение для сложения
+/// <summary>
+/// Нетерминальное выражение для умножения
+/// </summary>
+class PowExpression : IExpression
 {
     IExpression LeftExpression { get; set; }
     IExpression RightExpression { get; set; }
@@ -109,7 +130,10 @@ class PowExpression : IExpression // нетерминальное выражен
     }
 }
 
-class SubstructExpression : IExpression // нетерминальное выражение для вычитания
+/// <summary>
+/// Нетерминальное выражение для вычитания
+/// </summary>
+class SubstructExpression : IExpression 
 {
     IExpression LeftExpression { get; set; }
     IExpression RightExpression { get; set; }
