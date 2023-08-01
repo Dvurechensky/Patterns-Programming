@@ -20,7 +20,7 @@ class Program
         context.SetVariable("y", y);
         context.SetVariable("z", z);
         context.SetVariable("k", k);
-        //x + y - z
+        //(x + y - z) * k
         var expressionAdd = new AddExpression(new NumberExpression("x"), 
                                               new NumberExpression("y"));
         var expressionSub = new SubstructExpression(expressionAdd, 
@@ -29,9 +29,6 @@ class Program
         Console.WriteLine(expressionPow.Interpret(context));
         Console.WriteLine("Please press Enter...");
         Console.ReadKey();
-        #endregion
-        #region Пример №2
-       
         #endregion
     }
 }
