@@ -8,14 +8,22 @@ class Program
 {
     public static void Main(string[] args)
     {
+        #region Пример №1 - базовое
         new School().Learn();
         new University().Learn();
         Console.ReadKey();
+        #endregion
     }
 }
 
+/// <summary>
+/// Представление образовательного процесса
+/// </summary>
 abstract class Education
 {
+    /// <summary>
+    /// Обучение
+    /// </summary>
     public virtual void Learn()
     {
         Enter();
@@ -24,12 +32,27 @@ abstract class Education
         GetDocument();
     }
 
-    protected abstract void GetDocument(); //получение документа об окончании образования
-    protected abstract void PassExams(); //сдача экзаменов в учебном заведении
-    protected abstract void Study(); //обучение в учебном заведении
-    protected abstract void Enter(); //поступление в учебное заведение
+    /// <summary>
+    /// Получение документа об окончании образования
+    /// </summary>
+    protected abstract void GetDocument();
+    /// <summary>
+    /// Cдача экзаменов в учебном заведении
+    /// </summary>
+    protected abstract void PassExams();
+    /// <summary>
+    /// Обучение в учебном заведении
+    /// </summary>
+    protected abstract void Study();
+    /// <summary>
+    /// Поступление в учебное заведение
+    /// </summary>
+    protected abstract void Enter();
 }
 
+/// <summary>
+/// Школа реализовывающее процесс образования со своими дополнениями
+/// </summary>
 class School : Education
 {
     protected override void Enter()
@@ -64,6 +87,9 @@ class School : Education
     }
 }
 
+/// <summary>
+/// Университет реализовывающий процесса образования
+/// </summary>
 class University : Education
 {
     protected override void Enter()

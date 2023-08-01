@@ -8,19 +8,27 @@ class Program
 {
     public static void Main(string[] args)
     {
+        #region Пример №1 - базовое
         var car = new Car(new PetrolMove());
         car.Move();
         car.Movable = new ElectronicMove();
         car.Move();
         Console.ReadKey();
+        #endregion
     }
 }
 
+/// <summary>
+/// Поведение движения
+/// </summary>
 interface IMovable
 {
     void Move();
 }
 
+/// <summary>
+/// Бензиновый двигатель
+/// </summary>
 class PetrolMove : IMovable
 {
     public void Move()
@@ -29,6 +37,9 @@ class PetrolMove : IMovable
     }
 }
 
+/// <summary>
+/// Электродвигатель
+/// </summary>
 class ElectronicMove : IMovable
 {
     public void Move()
@@ -37,9 +48,15 @@ class ElectronicMove : IMovable
     }
 }
 
+/// <summary>
+/// Автомобиль
+/// </summary>
 class Car
 {
-    public IMovable Movable { private get; set; } //способ передвижения автомобиля
+    /// <summary>
+    /// Cпособ передвижения автомобиля
+    /// </summary>
+    public IMovable Movable { private get; set; }
 
     public Car(IMovable movable)
     {

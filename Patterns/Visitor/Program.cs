@@ -10,21 +10,38 @@ class Program
 {
     public static void Main(string[] args)
     {
+        #region Пример №1 - базовое
         var bank = new Bank();
         bank.Add(new Person(Name: "Joshua", Number: 1997));
         bank.Add(new Company(Name: "Microsoft", Number: 1904));
         bank.Accept(new HtmlVisitor());
         bank.Accept(new XmlVisitor());
         Console.ReadKey();
+        #endregion
     }
 }
 
-//абстрактный класс Element
+/// <summary>
+/// Поведение посетителя
+/// отделяет логику сериализации от классов в которых она применима
+/// </summary>
+interface IVisitor
+{
+    void VisitPersonAcc(Person person);
+    void VisitCompanyAcc(Company company);
+}
+
+/// <summary>
+/// Поведение аккаунта
+/// </summary>
 interface IAccaunt
 {
     void Accept(IVisitor visitor);
 }
 
+/// <summary>
+/// Шаблон банка
+/// </summary>
 class Bank
 {
     List<IAccaunt> Accaunts;
@@ -34,16 +51,28 @@ class Bank
         Accaunts = new List<IAccaunt>();
     }
 
+    /// <summary>
+    /// Добавить аккаунт
+    /// </summary>
+    /// <param name="accaunt">аккаунт</param>
     public void Add(IAccaunt accaunt)
     {
         Accaunts.Add(accaunt);
     }
 
+    /// <summary>
+    /// Удаллить аккаунт
+    /// </summary>
+    /// <param name="accaunt">аккаунт</param>
     public void Remove(IAccaunt accaunt)
     {
         Accaunts.Remove(accaunt);
     }
 
+    /// <summary>
+    /// Получить доступ к своему аккаунту
+    /// </summary>
+    /// <param name="visitor">пользователь</param>
     public void Accept(IVisitor visitor)
     {
         foreach (var accaunt in Accaunts)
@@ -51,6 +80,11 @@ class Bank
     }
 }
 
+/// <summary>
+/// Пользователь
+/// </summary>
+/// <param name="Name">Имя</param>
+/// <param name="Number">Номер</param>
 record Person(string Name, int Number) : IAccaunt
 {
     public void Accept(IVisitor visitor)
@@ -59,6 +93,11 @@ record Person(string Name, int Number) : IAccaunt
     }
 }
 
+/// <summary>
+/// Компания
+/// </summary>
+/// <param name="Name">Имя</param>
+/// <param name="Number">Номер</param>
 record Company(string Name, int Number) : IAccaunt
 {
     public void Accept(IVisitor visitor)
@@ -67,15 +106,9 @@ record Company(string Name, int Number) : IAccaunt
     }
 }
 
-//абстрактный класс посетителя
-//отделяет логику сериализации от классов в которых она применима
-interface IVisitor
-{
-    void VisitPersonAcc(Person person);
-    void VisitCompanyAcc(Company company);
-}
-
-//сериализатор в HTML
+/// <summary>
+/// HTML сериализатор
+/// </summary>
 class HtmlVisitor : IVisitor
 {
     public void VisitCompanyAcc(Company company)
@@ -89,7 +122,9 @@ class HtmlVisitor : IVisitor
     }
 }
 
-//сериализатор в XML
+/// <summary>
+/// XML сериализатор
+/// </summary>
 class XmlVisitor : IVisitor
 {
     public void VisitCompanyAcc(Company company)
