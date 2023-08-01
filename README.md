@@ -24,7 +24,7 @@
 - 😈 Такие паттерны как:
 >
 <h1 align="center">🌐 Поведенческие 🌐<h1>
-<table align="center" style="font-size: initial;">
+<table align="center" style="font-size: initial;" style="font-size: initial;" style="font-size: initial;" dwadwa>
     <thead>
         <tr>
             <th>Паттерн</th>
