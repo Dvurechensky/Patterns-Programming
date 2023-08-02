@@ -3,16 +3,14 @@
     ожидаемый клиентом. Позволяет классам 
     с разными интерфейсами работать вместе.
  */
-
 class Program
 {
     static void Main()
     {
         var man = new Driver();
-        //машина она едет также как мотоцикл, всё отлично
-        var car = new Auto();
-        //но мы хотим добраться на пешем транспорте (на верблюде)
-        var camelTransport = new CamelToTransport(new Camel());
+        var car = new Auto();   //машина она едет также как мотоцикл, всё отлично
+        var camelTransport =    //но мы хотим добраться на пешем транспорте (на верблюде)
+            new CamelToTransport(new Camel());
 
         man.Travel(camelTransport);
         man.Travel(car);
@@ -26,7 +24,9 @@ interface ITransport
     void Drive();
 }
 
-//оно едет
+/// <summary>
+/// Шаблон автомобиля
+/// </summary>
 class Auto : ITransport
 {
     public void Drive()
@@ -35,6 +35,9 @@ class Auto : ITransport
     }
 }
 
+/// <summary>
+/// Шаблон верблюда
+/// </summary>
 class Camel
 {
     public void Move()
@@ -43,8 +46,9 @@ class Camel
     }
 }
 
-
-//верблюд не едет но ходит
+/// <summary>
+/// Шаблон движения верблюда
+/// </summary>
 class CamelToTransport : ITransport
 {
     Camel camel;
@@ -60,7 +64,9 @@ class CamelToTransport : ITransport
     }
 }
 
-//наш путешественник
+/// <summary>
+/// Шаблон путешественника
+/// </summary>
 class Driver
 {
     public void Travel(ITransport transport)
