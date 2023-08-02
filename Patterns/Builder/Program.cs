@@ -4,40 +4,56 @@
     процесс построения может может создавать
     объекты с разным состоянием
  */
-
 class Program
 {
     static void Main()
     {
+        #region Пример №1 - базовое
         var rx = new Baker();
         var bread = rx.Bake(new RBuilderBread());
+
         Console.WriteLine(bread.ToString());
         Console.ReadKey();
+        #endregion
     }
 }
 
-//мука
+/// <summary>
+/// Мука
+/// </summary>
 class Floor
 {
-    //Сорт муки
+    /// <summary>
+    /// Сорт муки
+    /// </summary>
     public string Sort { get; set; }
 }
 
-//Соль
+/// <summary>
+/// Соль
+/// </summary>
 class Salt
 { 
-    //Масса
+    /// <summary>
+    /// Масса
+    /// </summary>
     public double Mass { get; set; }
 }
 
-//Пищевые добавки
+/// <summary>
+/// Пищевые добавки
+/// </summary>
 class Additives
 {
-    //Список пищевых добавок
+    /// <summary>
+    /// Список пищевых добавок
+    /// </summary>
     public string[] Names { get; set; }
 }
 
-//Сам хлеб
+/// <summary>
+/// Xлеб
+/// </summary>
 class Bread
 { 
     public Floor Floor { get; set; }
@@ -50,6 +66,9 @@ class Bread
     }
 }
 
+/// <summary>
+/// Строитель хлеба
+/// </summary>
 abstract class BreadBuilder
 {
     public Bread Bread { get; set; }
@@ -63,7 +82,9 @@ abstract class BreadBuilder
     public abstract void SetAdditives();
 }
 
-//пекарь
+/// <summary>
+/// Пекарь
+/// </summary>
 class Baker
 {
     public Bread Bake(BreadBuilder breadBuilder)
@@ -77,7 +98,9 @@ class Baker
 }
 
 
-//для ржаного хлеба строитель
+/// <summary>
+/// Для ржаного хлеба строитель
+/// </summary>
 class RBuilderBread : BreadBuilder
 {
     public override void SetAdditives()

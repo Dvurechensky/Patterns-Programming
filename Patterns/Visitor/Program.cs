@@ -5,7 +5,6 @@
     без изменения кода классов, над которыми
     эта операция производитcя.
  */
-
 class Program
 {
     public static void Main(string[] args)

@@ -3,11 +3,11 @@
     групп связанных или зависимых объектов,
     не указывая их конкретный класс
  */
-
 class Program
 {
     static void Main()
     {
+        #region Пример №1 - базовое
         var soldier = new Hero(new SoldierFactory());
         soldier.Run();
         soldier.Hit();
@@ -17,21 +17,29 @@ class Program
         elf.Hit();
 
         Console.ReadKey();
+        #endregion
     }
 }
 
-//оружие базовая логика
+/// <summary>
+/// Оружие базовая логика
+/// </summary>
 abstract class Weapon
 {
     public abstract void Hit();
 }
 
-//движение базовая логика
+/// <summary>
+/// Движение базовая логика
+/// </summary>
 abstract class Movement
 {
     public abstract void Move();
 }
 
+/// <summary>
+/// Огнестрел
+/// </summary>
 class Gun : Weapon
 {
     public override void Hit()
@@ -40,6 +48,9 @@ class Gun : Weapon
     }
 }
 
+/// <summary>
+/// Арбалет
+/// </summary>
 class Arbalet : Weapon
 {
     public override void Hit()
@@ -48,6 +59,9 @@ class Arbalet : Weapon
     }
 }
 
+/// <summary>
+/// Герой летает
+/// </summary>
 class Fly : Movement
 {
     public override void Move()
@@ -56,6 +70,9 @@ class Fly : Movement
     }
 }
 
+/// <summary>
+/// Герой бежит
+/// </summary>
 class Run : Movement
 {
     public override void Move()
@@ -64,7 +81,9 @@ class Run : Movement
     }
 }
 
-//клиент - супергерой
+/// <summary>
+/// Супергерой
+/// </summary>
 class Hero
 {
     private Weapon Weapon { get; set; }
@@ -87,12 +106,18 @@ class Hero
     }
 }
 
+/// <summary>
+/// Абстракция фабрика героев
+/// </summary>
 abstract class HeroFactory
 { 
     public abstract Weapon CreateWeapon();
     public abstract Movement CreateMovement();
 }
 
+/// <summary>
+/// Эльфы
+/// </summary>
 class ElfFactory : HeroFactory
 {
     public override Movement CreateMovement()
@@ -106,6 +131,9 @@ class ElfFactory : HeroFactory
     }
 }
 
+/// <summary>
+/// Солдаты
+/// </summary>
 class SoldierFactory : HeroFactory
 {
     public override Movement CreateMovement()

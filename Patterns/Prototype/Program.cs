@@ -4,27 +4,32 @@
     и создаёт новые объекты, копируя прототип
     (техника клонирования объектов)
  */
-
 class Program
 {
     static void Main()
     {
+        #region Пример №1 - базовое
         IFigure cube = new Cube(10, 10);
         IFigure cloneCube = cube.Clone();
         IFigure cloneMemberCube = cube.CloneMember();
         cube.GetInfo();
         cloneCube.GetInfo();
         cloneMemberCube.GetInfo();
+        #endregion
 
-        //№2
+        #region Пример №2
         IEntity entity = new Predator(10, 1000);
         var clone = entity.CloneEntity();
         entity.GetInfo();
         clone.GetInfo();
         Console.ReadKey();
+        #endregion
     }
 }
 
+/// <summary>
+/// Поведение фигуры
+/// </summary>
 interface IFigure
 {
     IFigure Clone();
@@ -32,6 +37,9 @@ interface IFigure
     void GetInfo();
 }
 
+/// <summary>
+/// Шаблон куба
+/// </summary>
 class Cube : IFigure
 {
     int Width { get; set; }
@@ -59,6 +67,9 @@ class Cube : IFigure
     }
 }
 
+/// <summary>
+/// Треугольник
+/// </summary>
 class Rect : IFigure
 {
     int Width { get; set; }
@@ -86,8 +97,9 @@ class Rect : IFigure
     }
 }
 
-//#2
-
+/// <summary>
+/// Поведение сущности
+/// </summary>
 interface IEntity
 {
     IEntity CloneEntity();

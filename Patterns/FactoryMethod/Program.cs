@@ -4,11 +4,11 @@
     Позволяет делегировать создание класса
     объектам класса.
  */
-
 class Program
 {
     static void Main()
     {
+        #region Пример №1 - базовое
         var ltd = new WoodDeveloper();
         ltd.Create();
 
@@ -23,16 +23,22 @@ class Program
         a2.Create();
 
         Console.ReadKey();
+        #endregion
     }
 }
 
-//*** представления через обобщения (нельзя инициализировать через параметризированный конструктор)
+/// <summary>
+/// *** представления через обобщения (нельзя инициализировать через параметризированный конструктор)
+/// </summary>
+/// <typeparam name="T">обобщающий тип</typeparam>
 class Creator<T> where T : Developer, new()
 {
     public T FactoryMethod() { return new T(); }
 }
 
-//строительная компания - базовая логика
+/// <summary>
+/// Cтроительная компания - базовая логика
+/// </summary>
 abstract class Developer
 {
     protected string Name { get; set; }
@@ -42,7 +48,11 @@ abstract class Developer
         Name = name;
     }
 
-    public abstract House Create();//фабричный метод
+    /// <summary>
+    /// Фабричный метод
+    /// </summary>
+    /// <returns>House</returns>
+    public abstract House Create();             
 }
 
 class WoodDeveloper : Developer
@@ -69,11 +79,17 @@ class OfficeDeveloper : Developer
     }
 }
 
+/// <summary>
+/// Общая логика операций над строением
+/// </summary>
 abstract class House
 {
     public abstract void Build();
 }
 
+/// <summary>
+/// Панельный дом
+/// </summary>
 class PanelHouse : House
 {
     public PanelHouse()
@@ -87,6 +103,9 @@ class PanelHouse : House
     }
 }
 
+/// <summary>
+/// Офисное здание
+/// </summary>
 class OfficeHouse : House
 {
     public OfficeHouse()

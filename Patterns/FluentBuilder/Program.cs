@@ -3,17 +3,21 @@
     объектов с помощью методов-цепочек, которые 
     наделяют объект каким-то определенным качеством
  */
-
 class Program
 {
     static void Main()
     {
+        #region Пример №1 - базовое
         User user = new User().Create().SetName("Alex").SetPassword("admin");
         Console.WriteLine(user);
         Console.ReadKey();
+        #endregion
     }
 }
 
+/// <summary>
+/// Шаблон пользователя
+/// </summary>
 class User
 {
     public string Name { get; set; }
@@ -30,7 +34,9 @@ class User
     }
 }
 
-//гибкий строитель конфигурации User
+/// <summary>
+/// Шаблон гибкого строителя конфигурации пользователя
+/// </summary>
 class UserBuilder
 {
     private User CurrentUser { get; set; } 
@@ -51,7 +57,10 @@ class UserBuilder
         return this;
     }
 
-    //преобразуем тип Builder в тип User для которого он использовался
+    /// <summary>
+    /// преобразуем тип Builder в тип User для которого он использовался
+    /// </summary>
+    /// <param name="builder">строитель</param>
     public static implicit operator User(UserBuilder builder)
     {
         return builder.CurrentUser;

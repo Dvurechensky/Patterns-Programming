@@ -3,9 +3,6 @@
     доступа к множеству, независимо от его
     внутреннего устройства
  */
-
-using System.Linq.Expressions;
-
 class Program
 {
     public static void Main(string[] args)

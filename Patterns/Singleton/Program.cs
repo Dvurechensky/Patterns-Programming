@@ -8,12 +8,14 @@ class Program
 {
     static void Main()
     {
-        (new Thread(() => //в потоке
+        #region Пример №1 - базовое
+        (new Thread(() => 
         {
             Console.WriteLine(GameHistory.Instance.History[1]);
         })).Start();
         Console.WriteLine(GameHistory.Instance.History[0]);
         Console.ReadKey();
+        #endregion
     }
 }
 
