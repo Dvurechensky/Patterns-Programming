@@ -7,6 +7,7 @@ class Program
 {
     static void Main()
     {
+        #region Пример №1 - базовое
         var man = new Driver();
         var car = new Auto();   //машина она едет также как мотоцикл, всё отлично
         var camelTransport =    //но мы хотим добраться на пешем транспорте (на верблюде)
@@ -16,6 +17,7 @@ class Program
         man.Travel(car);
 
         Console.ReadKey();
+        #endregion
     }
 }
 

@@ -2,11 +2,11 @@
     Разделяет абстракцию и реализацию так, 
     чтобы они могли изменяться независимо друг от друга
  */
-
 class Program
 {
     static void Main()
     {
+        #region Пример №1 - базовое
         var programmer_1 = new FreelancerProgger(new CPPLang());
         programmer_1.DoWork();
         programmer_1.EarnMoney();
@@ -14,6 +14,7 @@ class Program
         programmer_2.DoWork();
         programmer_2.EarnMoney();
         Console.ReadKey();
+        #endregion
     }
 }
 
