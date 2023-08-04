@@ -18,6 +18,9 @@ class Program
     }
 }
 
+/// <summary>
+/// Поведение языка
+/// </summary>
 interface ILanguage
 {
     void Build();

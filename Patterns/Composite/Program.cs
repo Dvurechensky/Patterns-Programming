@@ -4,11 +4,11 @@
     клиенту одинаково обращаться как к отдельному,
     так и к целому поддереву
  */
-
 class Program
 {
     static void Main()
     {
+        #region Пример №1 - базовое
         var paths = new Paths(new Dictionary<int, Directory>());
         paths.components.Add(1, new Directory("C"));
         paths.components[1].Add(new Folder("SYSTEM"));
@@ -18,7 +18,25 @@ class Program
         paths.components[0].Add(new File("resize.cs"));
         paths.Print();
         Console.ReadKey();
+        #endregion
     }
+}
+
+/// <summary>
+/// Абстракция компонента файловой системы (дерева) - пути до файла
+/// </summary>
+abstract class Component
+{
+    protected string name;
+
+    public Component(string name)
+    {
+        this.name = name;
+    }
+
+    public virtual void Add(Component component) { }
+    public abstract void Remove(Component component);
+    public abstract void Print();
 }
 
 class Paths : Component
@@ -43,21 +61,6 @@ class Paths : Component
     {
         Console.WriteLine("Delete Path" + this.name);
     }
-}
-
-//компонент файловой системы (дерева) - пути до файла
-abstract class Component
-{
-    protected string name;
-
-    public Component(string name)
-    {
-        this.name = name;
-    }
-
-    public virtual void Add(Component component) { }
-    public abstract void Remove(Component component);
-    public abstract void Print();
 }
 
 class Directory : Component

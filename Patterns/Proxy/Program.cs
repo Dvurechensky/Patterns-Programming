@@ -1,15 +1,14 @@
-﻿/*  Заместитель
+﻿using Microsoft.EntityFrameworkCore;
+/*  Заместитель
     Предоставляет объект-заместитель другого объекта
     для контроля доступа к нему
  */
-
-using Microsoft.EntityFrameworkCore;
-
 class Program
 {
     static void Main()
     {
-        using(IBook book = new BookStoreProxy())
+        #region Пример №1 - базовое
+        using (IBook book = new BookStoreProxy())
         {
             //читаем первую страницу
             Page page1 = book.GetPage(1);
@@ -22,10 +21,16 @@ class Program
             Console.WriteLine(page1.Text);
         }
         Console.ReadKey();
+        #endregion
     }
 }
 
-//отдельная страница книги
+/// <summary>
+/// отдельная страница книги
+/// </summary>
+/// <param name="Id">Идентификатор</param>
+/// <param name="Number">Номер</param>
+/// <param name="Text">Содержимое</param>
 record Page(int Id, int Number, string Text);
 
 class PageContext : DbContext

@@ -4,16 +4,17 @@
     собой гибкую альтернативу наследованию
     для расширения функциональности.
  */
-
 class Program
 {
     static void Main()
     {
+        #region Пример №1 - базовое
         Pizza r = new RussianPizza();
         Console.WriteLine(r.GetCost()); 
         Pizza i = new TomatoPizza(r);
         Console.WriteLine(i.GetCost());
         Console.ReadKey();
+        #endregion
     }
 }
 

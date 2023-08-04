@@ -4,11 +4,11 @@
     с большим количеством объектов.
     (для оптимизации работы с памятью)
  */
-
 class Program
 {
     static void Main()
     {
+        #region Пример №1 - базовое
         double longtitude = 22.33;
         double latitude = 55.11;
 
@@ -32,14 +32,23 @@ class Program
         }
 
         Console.ReadKey();
+        #endregion
     }
 }
 
 abstract class House
 {
-    protected int stages; // кол-во этажей - внутреннее состояние
+    /// <summary>
+    /// Кол-во этажей - внутреннее состояние
+    /// </summary>
+    protected int stages;                                           
 
-    public abstract void Build(double latitude, double longitude); // внешнее состояние
+    /// <summary>
+    /// Внешнее состояние действия
+    /// </summary>
+    /// <param name="latitude"></param>
+    /// <param name="longitude"></param>
+    public abstract void Build(double latitude, double longitude);
 }
 
 class PanelHouse : House

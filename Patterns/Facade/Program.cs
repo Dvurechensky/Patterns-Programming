@@ -3,14 +3,15 @@
     интерфейсов подсистемы. Определяет высокоуровневый
     интерфейс, делая систему проще для использования.
  */
-
 class Program
 {
     static void Main()
     {
+        #region Пример №1 - базовое
         var facade = new Facade(new A(), new B());
         facade.Start();
         Console.ReadKey();
+        #endregion
     }
 }
 
